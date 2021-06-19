@@ -8,3 +8,7 @@ def home(request):
             "edad":"24"}
 
     return render(request, 'core/home.html', contexto)
+
+def login(request):
+
+        return render(request, 'core/login.html')
