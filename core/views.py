@@ -1,10 +1,15 @@
 from django.shortcuts import render
+from .models import post
 
 # Create your views here.
 
 def home(request):
         
-    return render(request, 'core/home.html')
+        posts = post.objects.all()
+        data = { 
+                'posts': posts
+        }
+        return render(request, 'core/home.html', data)
 
 def login(request):
 

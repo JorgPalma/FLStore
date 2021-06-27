@@ -1,4 +1,5 @@
 {% load static %}
+{% load humanize %}
 
 <!DOCTYPE html>
 <html lang="es">
@@ -141,7 +142,22 @@
         <div class="articles container">
             <h2 class="op-h2 text-center">DESTACADOS</h2>
             <div class="op-articles-container row">
-                
+                {% for post in posts %}
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <article class="card op-card">
+                        {% if post.imgP %}
+                        <img class="card-img-top op-card-img" src="{{ post.imgP.url }}"alt="{{ post.nombreP }}"/>
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title text-center">{{post.nombreP}}</h5>
+                            <p class="card-text text-center">{{post.miniDescripcion}}</p>
+                            <hr>
+                                <div class="text-center">{{ post.nombreU }}</div>
+                            <a href="detalle.html" class="btn button1">Ver detalles</a>
+                        </div>
+                    </article>
+                </div>
+                {% endfor %}
             </div>
         </div>
     </main>
