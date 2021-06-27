@@ -26,3 +26,10 @@ class post(models.Model):
     def __str__(self):
         return f"Usuario: {self.nombreU}, Post: {self.nombreP}"
 
+class contacto(models.Model):
+    nombreC = models.CharField(verbose_name="Nombre de contacto", max_length=20)
+    correoC = models.EmailField(verbose_name="Correo de contacto")
+    mensajeC = models.TextField(verbose_name="Mensaje de contacto")
+
+    def __str__(self):
+        return f"Usuario: {self.nombreC}"

@@ -171,14 +171,14 @@
                     alt="contacto">
                 </div>
                 <div class="col-lg-5 op-contact-form-container">
-                        <form data-parsley-validate>
-                            <label class="op-icon-form-container text-right" for="f-user-name"><i class="fas fa-user"></i></label><input type="text" name="usuario" data-parsley-trigger="keyup" data-parsley-type="alphanum" data-parsley-length="[4, 20]" name="" id="f-user-name" placeholder="Nombre" data-parsley-required="true">
-                            <label class="op-icon-form-container" for="f-user-email"><i class="fas fa-at"></i></label><input type="email" name="correo" data-parsley-trigger="keyup" required data-parsley-length="[3, 35]" data-parsley-type="email" name="" id="f-user-email" placeholder="Correo electrónico">
-                            
-                            <textarea name="" id="" cols="30" rows="10" placeholder="Escribe tu mensaje" required data-parsley-length="[15, 9999]" data-parsley-trigger="keyup" ></textarea>
-                            <input type="submit" value="Enviar">
-                            <input type="reset" value="Limpiar">
-                        </form>   
+                            <form method="POST">
+                                {% csrf_token %}
+    
+                                {{ formContacto }}
+                                <input type="reset" value="Limpiar">
+                                <input type="submit" value="Enviar">
+                            </form>  
+                            {{mensaje}} 
                 </div>
             </div>
         </div>
