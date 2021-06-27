@@ -32,7 +32,7 @@
                                 Productos
                             </a>
                             <ul class="dropdown-menu op-dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="tecnologia.html">Tecnología</a></li>
+                                <li><a class="dropdown-item" href="{% url 'feed' %}">Tecnología</a></li>
                                 <li><a class="dropdown-item" href="ropa.html">Ropa</a></li>
                                 <li><a class="dropdown-item" href="comida.html">Comida</a></li>
                                 <li><a class="dropdown-item" href="#">Ver todo</a></li>
@@ -42,10 +42,10 @@
                             <a href="#iop-contact-container" class="nav-link">Contacto</a>
                         </li>
                         <li class="nav-item">
-                            <a href="login.html" class="nav-link">Iniciar sesión</a>
+                            <a href="{% url 'login' %}" class="nav-link">Iniciar sesión</a>
                         </li>
                         <li class="nav-item">
-                            <a href="signup.html" class="nav-link">Registrarse</a>
+                            <a href="{% url 'signup' %}" class="nav-link">Registrarse</a>
                         </li>
                     </ul>
     
