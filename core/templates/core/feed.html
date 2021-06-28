@@ -12,40 +12,40 @@
     <link  rel="icon" href="{ static 'core/img/favicon.ico'}" type="image/png"/>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'core/css/style.css'%}">
-    <title>FL STORE | Tecnología</title>
+    <title>FL STORE | Ver todo</title>
 
 
     <header>
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <a href="index.html" class="navbar-brand op-logo">FL STORE</a>
+                <a href="{% url 'home' %}" class="navbar-brand op-logo">FL STORE</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Menú de navegación">
                     <span class="navbar-toggler-icon"><i class="fas fa-bars op-vanbar-toggler-icon"></i></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbar">
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">
                         <li class="nav-item">
-                            <a href="index.html" class="nav-link ml-lg-2 active">Inicio</a>
+                            <a href="{% url 'home' %}" class="nav-link ml-lg-2 active">Inicio</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Productos
                             </a>
                             <ul class="dropdown-menu op-dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Tecnología</a></li>
-                                <li><a class="dropdown-item" href="ropa.html">Ropa</a></li>
-                                <li><a class="dropdown-item" href="comida.html">Comida</a></li>
-                                <li><a class="dropdown-item" href="#">Ver todo</a></li>
+                                {% for cat in categorias %}
+                                <li><a class="dropdown-item" href="{% url 'feed' %}">{{cat.nombreCat}}</a></li>
+                                {% endfor %}
+                                <li><a class="dropdown-item" href="{% url 'feed' %}">Ver todo</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="contacto.html" class="nav-link">Contacto</a>
+                            <a href="{% url 'contacto' %}" class="nav-link">Contacto</a>
                         </li>
                         <li class="nav-item">
-                            <a href="login.html" class="nav-link">Iniciar sesión</a>
+                            <a href="{% url 'login' %}" class="nav-link">Iniciar sesión</a>
                         </li>
                         <li class="nav-item">
-                            <a href="signup.html" class="nav-link">Registrarse</a>
+                            <a href="{% url 'signup' %}" class="nav-link">Registrarse</a>
                         </li>
                     </ul>
     
@@ -63,8 +63,24 @@
 <div class="container">
 <h1 class="mt-3">Productos</h1>
 <hr>
-<h2>Tecnología</h2>
-    <div class="row">        
+<h2>Ver todo</h2>
+    <div class="row">
+        {% for post in posts %}
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <article class="card op-card">
+                <img class="card-img-top op-card-img" 
+                src="{{ post.imgP.url }}" 
+                alt="{{ post.nombreP }}"/>
+                <div class="card-body">
+                    <h5 class="card-title text-center">{{ post.nombreP }}</h5>
+                    <p class="card-text text-center">{{ post.miniDescripcion}}</p>
+                    <hr>
+                        <div class="text-center">{{ post.nombreU }}</div>                       
+                    <a href="{% url 'detalle' post.id %}" class="btn button1">Ver detalles</a>
+                </div>
+            </article>
+        </div>
+        {% endfor %}
     </div>
 </div>
 

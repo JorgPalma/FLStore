@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import post
+from .models import post, categoria
 from .forms import contactoForm, addForm
 
 # Create your views here.
@@ -7,9 +7,11 @@ from .forms import contactoForm, addForm
 def home(request):
         
         posts = post.objects.all()
+        categorias = categoria.objects.all()
         data = { 
                 'posts': posts,
-                'formContacto': contactoForm()
+                'formContacto': contactoForm(),
+                'categorias': categorias
         }
 
         if request.method == 'POST':
@@ -48,14 +50,29 @@ def contacto(request):
         return render(request, 'core/contacto.html', data)
 
 
-def detalle(request): 
+def detalle(request, id): 
 
-        return render(request, 'core/detalle.html')
+        categorias = categoria.objects.all()
+        detalleP = get_object_or_404(post, id=id)
+
+        data = {
+                'detalleP':detalleP,
+                'categorias': categorias
+        }
+
+        return render(request, 'core/detalle.html', data)
         
 
 def feed(request): 
 
-        return render(request, 'core/feed.html')
+        posts = post.objects.all()
+        categorias = categoria.objects.all()
+        data = { 
+                'posts': posts,
+                'categorias': categorias
+        }
+
+        return render(request, 'core/feed.html', data)
 
 def agregar(request):
 
@@ -83,6 +100,7 @@ def listar(request):
 
         return render(request, 'core/listar.html', data)
 
+
 def editar(request, id):
 
         poste = get_object_or_404(post, id=id)
@@ -102,8 +120,7 @@ def editar(request, id):
         return render(request, 'core/editar.html', data)
 
 def eliminar(request, id):
-
+        
         poste = get_object_or_404(post, id=id)
         poste.delete()
         return redirect(to="listar")
-
