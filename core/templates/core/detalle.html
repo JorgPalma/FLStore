@@ -13,20 +13,20 @@
     <link  rel="icon" href="{ static 'core/img/favicon.ico'}" type="image/png"/>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'core/css/style.css'%}">
-    <title>FL STORE | Detalles</title>
+    <title>FL STORE | Detalle {{detalleP.nombreP}}</title>
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <a href="index.html" class="navbar-brand op-logo">FL STORE</a>
+                <a href="{% url 'home' %}" class="navbar-brand op-logo">FL STORE</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Menú de navegación">
                     <span class="navbar-toggler-icon"><i class="fas fa-bars op-vanbar-toggler-icon"></i></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbar">
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">
                         <li class="nav-item">
-                            <a href="index.html" class="nav-link ml-lg-2 active">Inicio</a>
+                            <a href="{% url 'home' %}" class="nav-link ml-lg-2 active">Inicio</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -40,13 +40,13 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="contacto.html" class="nav-link">Contacto</a>
+                            <a href="{% url 'contacto' %}" class="nav-link">Contacto</a>
                         </li>
                         <li class="nav-item">
-                            <a href="login.html" class="nav-link">Iniciar sesión</a>
+                            <a href="{% url 'login' %}" class="nav-link">Iniciar sesión</a>
                         </li>
                         <li class="nav-item">
-                            <a href="signup.html" class="nav-link">Registrarse</a>
+                            <a href="{% url 'signup' %}"" class="nav-link">Registrarse</a>
                         </li>
                     </ul>
     

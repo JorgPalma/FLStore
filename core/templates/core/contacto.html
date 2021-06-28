@@ -32,10 +32,10 @@
                                 Productos
                             </a>
                             <ul class="dropdown-menu op-dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="tecnologia.html">Tecnología</a></li>
-                                <li><a class="dropdown-item" href="ropa.html">Ropa</a></li>
-                                <li><a class="dropdown-item" href="comida.html">Comida</a></li>
-                                <li><a class="dropdown-item" href="#">Ver todo</a></li>
+                                {% for cat in categorias %}
+                                <li><a class="dropdown-item" href="{% url 'feed' %}">{{cat.nombreCat}}</a></li>
+                                {% endfor %}
+                                <li><a class="dropdown-item" href="{% url 'feed' %}">Ver todo</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
