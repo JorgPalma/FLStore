@@ -455,6 +455,54 @@ textarea.parsley-error {
   opacity: 1;
 }
 
+.add-form label{
+    display: none;
+}
+
+.add-form textarea {
+    resize: none;
+}
+
+.body-add-form {
+    background: var(--dark-blue);
+}
+
+.add-form {
+    padding: 20px;
+    margin-top: 20px;
+    background: var(--light);
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+.add-form-default,
+.add-form input[type="file"],
+.add-form select {
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 0px;
+    padding: 10px;
+    padding-left: 20px;
+    border-bottom: var(--light) 4px solid;
+    margin-bottom: 10px;
+}
+
+.add-form-especial {
+    width: 49%;
+    border: none;
+    outline: none;
+    border-radius: 0px;
+    padding: 10px;
+    padding-left: 20px;
+    border-bottom: var(--light) 4px solid;
+    margin-bottom: 10px;
+}
+
+.add-form-default:focus,
+.add-form-especial:focus{
+    border-bottom: var(--dark-bg) 4px solid;
+}
+
 @media only screen and (max-width: 600px) {
     .op-detail-table {
         display: block;

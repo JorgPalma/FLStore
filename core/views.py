@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import post
-from .forms import contactoForm
+from .forms import contactoForm, addForm
 
 # Create your views here.
 
@@ -56,3 +56,29 @@ def detalle(request):
 def feed(request): 
 
         return render(request, 'core/feed.html')
+
+def agregar(request):
+
+        data = {
+                'formAdd': addForm()
+        }
+
+        if request.method  == 'POST':
+                formularioAdd = addForm(data=request.POST, files=request.FILES)
+                if formularioAdd.is_valid():
+                        formularioAdd.save()
+                        data["mensaje"] = "Agregado correctamente"
+                else:
+                        data["formAdd"] = formularioAdd
+
+        return render(request, 'core/agregar.html', data)
+
+def listar(request):
+
+        posts = post.objects.all()
+
+        data = {
+                'posts' : posts
+        }
+
+        return render(request, 'core/listar.html', data)
