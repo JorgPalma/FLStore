@@ -42,13 +42,13 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6 col-12 add-form">
-                <h2 class="text-center">Agregar producto</h2>
+                <h2 class="text-center">Editar producto</h2>
                 <form class="d-flex flex-wrap justify-content-between form-add-form" action="" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
 
                     {{ formAdd }}
                     <input class="btn btn-lg btn-secondary" type="reset" value="Limpiar">
-                    <input class="btn btn-lg btn-success" type="submit" value="Agregar">
+                    <input class="btn btn-lg btn-primary" type="submit" value="Editar">
                 </form>
             </div>
         </div>

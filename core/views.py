@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import post
 from .forms import contactoForm, addForm
 
@@ -82,3 +82,28 @@ def listar(request):
         }
 
         return render(request, 'core/listar.html', data)
+
+def editar(request, id):
+
+        poste = get_object_or_404(post, id=id)
+
+        data = {
+                'formAdd': addForm(instance=poste)
+        }
+
+        if request.method == 'POST':
+                formularioEdit = addForm(data=request.POST, files=request.FILES, instance=poste)
+                if formularioEdit.is_valid():
+                        formularioEdit.save()
+                        return redirect(to="listar")
+                data["formAdd"] = formularioEdit
+
+
+        return render(request, 'core/editar.html', data)
+
+def eliminar(request, id):
+
+        poste = get_object_or_404(post, id=id)
+        poste.delete()
+        return redirect(to="listar")
+
